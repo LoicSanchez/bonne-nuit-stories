@@ -1,20 +1,20 @@
 <script>
 	import main from '$assets/images/main.svg';
+	import Title from './Title.svelte';
 	export let data;
 	$: ({ stories } = data);
 </script>
 
 <div class="container page">
 	<div class="info">
-		<h1>
-			It's <span>time</span> for a <span>Story</span>
-		</h1>
+		<Title />
+
 		<p>Shhtt... Bonne nuit, it's time to go to bed.</p>
 		<p>Find the story you want for tonight based on your mood.</p>
 		<ul>
 			{#each stories as story}
 				<li>
-					<p>{story.title}</p>
+					<p class="story"><a href="/story/{story.id}">{story.title}</a></p>
 				</li>
 			{/each}
 		</ul>
@@ -29,14 +29,15 @@
 		align-items: center;
 		margin-top: -3rem;
 	}
-	h1 {
-		font-weight: 700;
-	}
-	h1 span {
-		color: var(--primary-500);
-	}
+
 	p {
 		color: var(--text-color);
+	}
+	p a {
+		color: var(--text-color-200);
+	}
+	.story {
+		text-transform: capitalize;
 	}
 	.main-img {
 		display: none;

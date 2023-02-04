@@ -13,7 +13,15 @@
 import { stories } from '$db/stories';
 
 export const load = async function () {
-	const data = await stories.find({}, { projection: { _id: 0, title: 1 } }).toArray();
+	let data = [];
+	const cursor = await stories.find({}).limit(5);
+	await cursor.forEach((doc) => {
+		data.push({
+			_id: doc._id.toString(),
+			id: doc.id,
+			title: doc.title
+		});
+	});
 	// console.log('data', data)
 	return {
 		stories: data

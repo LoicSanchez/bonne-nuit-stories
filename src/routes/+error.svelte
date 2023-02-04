@@ -1,5 +1,5 @@
 <script>
-	import img from '$assets/images/snot-found.svg';
+	import img from '$assets/images/not-found.svg';
 	import './styles.css';
 </script>
 

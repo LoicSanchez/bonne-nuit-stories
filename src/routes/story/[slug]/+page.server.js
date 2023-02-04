@@ -1,11 +1,40 @@
-import { error } from '@sveltejs/kit';
+//With mongoose
+// import Story from '$db/Story'
 
-// export function load({ params }) {
-// 	const post = posts.find((post) => post.slug === params.slug)
-
-// 	if (!post) throw error(404)
-
+// export const load = async function () {
+// 	const data = await Story.find()
+// 	console.log('data', data)
 // 	return {
-// 		post,
+// 		stories: data,
 // 	}
 // }
+
+//With mongodb client
+import { stories } from '$db/stories';
+import { error } from '@sveltejs/kit';
+
+export const load = async function ({ params }) {
+	// console.log(params.slug);
+
+	const query = { id: params.slug, hidden: { $ne: true } };
+	const filter = {
+		$inc: {
+			'meta.views': 1
+		}
+	};
+	const options = {
+		// Include only some fields in the returned document
+		projection: { _id: 0, title: 1, type: 2, tags: 3, body: 4, lang: 5 }
+	};
+	// this method returns the matched document, not a cursor
+	const data = await stories.findOneAndUpdate(query, filter, options);
+
+	console.log('data', JSON.parse(JSON.stringify(data.value)));
+
+	if (!data.value) {
+		throw error(400, `No story with id ${params.slug}`);
+	}
+	return {
+		story: JSON.parse(JSON.stringify(data.value))
+	};
+};
