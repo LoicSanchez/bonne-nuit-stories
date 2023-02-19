@@ -1,4 +1,12 @@
-# create-svelte
+# Bonne Nuit Stories
+
+Bonne Nuit Stories is a minimalist, fun and relaxing site to find bilingual stories to read for kids and adults.
+
+<img width="750" alt="Bonne Nuit Home" src="https://user-images.githubusercontent.com/44512205/219951207-7935a6ed-e7bd-4a6f-bf3d-87749352bc7d.png">
+<img width="750" alt="Bonne Nuit Story Example" src="https://user-images.githubusercontent.com/44512205/219951208-0a6e1e8f-0a2d-4ad6-b958-6f164cc3522a.png">
+
+
+# Svelte/SvelteKit Instructions
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
