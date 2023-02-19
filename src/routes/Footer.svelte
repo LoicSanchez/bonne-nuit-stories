@@ -9,5 +9,7 @@
 		margin-bottom: 1rem;
 		letter-spacing: var(--letterSpacing);
 		max-width: none;
+		font-size: 0.9rem;
+		font-style: italic;
 	}
 </style>

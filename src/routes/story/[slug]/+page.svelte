@@ -13,38 +13,43 @@
 		<Tag text={tag} />
 	{/each}
 
+	{#each story.body[0].textBits as textBit, i}
 	<div class="row">
 		<div class="column left">
-			{#each story.body[0].textBits as textBit}
-				<p class="text-bit">{@html textBit.text}</p>
-			{/each}
+				<p class="text-bit">{@html story.body[0].textBits[i].text}</p>
+
 		</div>
 		<div class="column right">
-			{#each story.body[1].textBits as textBit}
-				<p class="text-bit">{@html textBit.text}</p>
-			{/each}
+				<p class="text-bit">{@html story.body[1].textBits[i].text}</p>
+			</div>
 		</div>
-	</div>
+		{/each}
 </div>
 
 <!-- <pre>{JSON.stringify(story)}</pre> -->
 <style>
 	div {
-		padding: 30px;
+		padding: 5px;
 	}
-	.text-bit:hover {
+	.row:hover {
 		background-color: var(--grey-700);
 	}
-	.text-bit {
+	
+	.row {
+		display: flex;
 		padding: 5px;
 		padding-left: 8px;
 		border-radius: 5px;
 	}
-	.row {
-		display: flex;
-	}
 	.column {
 		flex: 50%;
 		padding: 10px;
+	}
+	.column.left {
+		text-align:right;
+		padding-right:40px;
+	}
+	.column.right{
+		padding-left:40px;
 	}
 </style>

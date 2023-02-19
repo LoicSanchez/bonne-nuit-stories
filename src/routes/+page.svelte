@@ -1,6 +1,7 @@
 <script>
 	import main from '$assets/images/main.svg';
 	import Title from './Title.svelte';
+	import DualText from '$lib/DualText.svelte';
 	export let data;
 	$: ({ stories } = data);
 </script>
@@ -9,8 +10,11 @@
 	<div class="info">
 		<Title />
 
-		<p>Shhtt... Bonne nuit, it's time to go to bed.</p>
+		<p><DualText text1="Shhtt... Bonne nuit, it's time to go to bed." text2="Chuuut... Bonne nuit, il est l'heure d'aller au lit."/></p>
 		<p>Find the story you want for tonight based on your mood.</p>
+	</div>
+	<img src={main} alt="Camp fire under the moonlight" class="img main-img" />
+	<div>
 		<ul>
 			{#each stories as story}
 				<li>
@@ -19,7 +23,6 @@
 			{/each}
 		</ul>
 	</div>
-	<img src={main} alt="Camp fire under the moonlight" class="img main-img" />
 </div>
 
 <style>
@@ -45,7 +48,7 @@
 	@media (min-width: 992px) {
 		.page {
 			grid-template-columns: 1fr 1fr;
-			column-gap: 3rem;
+			/* column-gap: 3rem; */
 		}
 		.main-img {
 			display: block;

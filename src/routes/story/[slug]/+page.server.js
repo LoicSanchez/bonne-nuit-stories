@@ -29,8 +29,13 @@ export const load = async function ({ params }) {
 	// this method returns the matched document, not a cursor
 	const data = await stories.findOneAndUpdate(query, filter, options);
 
-	console.log('data', JSON.parse(JSON.stringify(data.value)));
+	// console.log('data', JSON.parse(JSON.stringify(data.value)));
+	let jsonData = JSON.parse(JSON.stringify(data.value));
+	let body = jsonData.body;
 
+	if (body[0].textBits.length != body[1].textBits.length) {
+		throw error(400, 'issue');
+	}
 	if (!data.value) {
 		throw error(400, `No story with id ${params.slug}`);
 	}
